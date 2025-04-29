@@ -159,6 +159,13 @@ header:after {
     transition: all 0.5s ease;
 }
 
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .profile-image:hover {
     transform: scale(1.05);
     border-color: var(--accent);
@@ -299,7 +306,7 @@ nav {
     width: 0;
     height: 2px;
     bottom: -2px;
-    left: 0;
+    joined: left;
     background-color: var(--secondary);
     transition: width 0.3s ease;
 }
@@ -388,6 +395,35 @@ p {
     font-weight: 500;
 }
   
+/* About Section Image */
+.about-content {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--secondary);
+    transition: all 0.4s ease;
+}
+
+.about-image:hover {
+    transform: scale(1.05);
+    border-color: var(--accent);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(55, 203, 198, 0.4);
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
 /* Modern Cards for Action Plan with Dark Theme */
 .action-plan {
     display: grid;
@@ -407,6 +443,29 @@ p {
     transform: translateY(30px);
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Dark overlay for action items with background images */
+.action-item[style*="background-image"] {
+    position: relative;
+}
+
+.action-item[style*="background-image"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(30, 30, 30, 0.85);
+    z-index: 0;
+}
+
+.action-item[style*="background-image"] > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* Add accent glow on hover */
@@ -460,7 +519,6 @@ p {
 }
   
 .action-item:hover h3 span {
-    transform: rotate(360deg);
     background-color: var(--primary);
 }
   
@@ -889,6 +947,16 @@ footer:before {
   
     main {
         padding: 40px 0;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-image {
+        max-width: 100%;
+        margin-bottom: 20px;
     }
 }
   
